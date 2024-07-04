@@ -1,0 +1,108 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> QRCode generator using only in javascript </title>
+ </head>
+ <body>
+    
+
+
+    <script>
+
+
+let container=document.createElement("div");
+container.style.backgroundColor="lightblue";
+container.style.height="300px";
+container.style.width="500px";
+container.style.borderRadius="5px";
+document.body.appendChild(container);
+
+
+
+ let h1=document.createElement("h1");
+ h1.textContent="Generate QR Code Using only JS";
+ h1.style.fontSize="30px";
+ h1.style.textAlign="center";
+ container.appendChild(h1);
+
+
+
+
+ let form=document.createElement("div");
+ form.style.textAlign="center";
+ let input=document.createElement("input");
+ input.classList.add("input1")
+ input.setAttribute("type","text");
+ input.style.width="340px";
+ input.style.border="0px";
+ input.style.height="50px";
+ input.style.borderRadius="5px";
+ let btn=document.createElement("button");
+ btn.classList.add("btn");
+ btn.textContent="Generate QR Code";
+ btn.style.backgroundColor="blue";
+ btn.style.width="340px";
+ btn.style.border="0px";
+ btn.style.height="50px";
+ btn.style.marginTop="30px";
+ btn.style.borderRadius="5px";
+ btn.style.color="white";
+ container.appendChild(form);
+ form.appendChild(input);
+ form.appendChild(btn);
+
+
+
+ let divimg=document.createElement("div");
+ divimg.classList.add("qrimg");
+ let img=document.createElement("img");
+ img.classList.add("img1");
+ img.setAttribute("src"," ");
+ container.appendChild(divimg);
+ divimg.appendChild(img);
+
+
+
+
+ let inp=document.querySelector(".input1");
+ let img1=document.querySelector("img");
+ let btn1=document.querySelector(".btn");
+ let qrimg=document.querySelector(".qrimg");
+ let container1=document.querySelector(".container");
+ let prevInput;
+
+
+
+
+
+
+ btn1.addEventListener("click", function(){
+     let inputE1=inp.value.trim();
+
+     if(!inputE1 || inputE1 ===prevInput){
+         alert("Enter text");
+     }
+     else{
+        prevInput=inputE1;
+        btn1.innerHTML="Generating QR Code.....";
+        img1.src= " https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=Hello" 
+        
+        img1.onload=function(){
+           img1.style.height="200px";
+           img1.style.width="200px";
+           qrimg.style.margin="40px";
+           img1.style.border="1px solid violet";
+            img1.style.padding="30px";
+            qrimg.style.display="flex";
+            qrimg.style.justifyContent="center";
+            qrimg.style.alignItems="center"
+            container.style.height="550px";
+            btn1.innerHTML="Generate QR Code";
+            console.log(this);
+        }
+    }
+})    </script>
+ </body>
+ </html>
